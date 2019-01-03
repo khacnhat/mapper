@@ -67,8 +67,8 @@ session's 10-digit id.
 - - - -
 
 ## GET ported_id(partial_id)
-Asks for the 6-digit saver id (if it exists) of the already ported storer
-session whose 10-digit id uniquely completes the given 6-10 digit partial_id.
+Asks for the 6-digit (saver) id of the already ported storer
+session whose 10-digit id uniquely completes the given 6-10 digit (storer) partial_id.
 - parameter, a 6-10 digit storer session id, eg
 ```
     { "partial_id": "55D3B9" }

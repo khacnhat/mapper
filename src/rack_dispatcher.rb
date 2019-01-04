@@ -21,7 +21,7 @@ class RackDispatcher
       'exception' => {
         'path' => path,
         'body' => body,
-        'class' => 'PorterService',
+        'class' => 'PortedService',
         'message' => error.message,
         'backtrace' => error.backtrace
       }
@@ -45,6 +45,7 @@ class RackDispatcher
       else
         raise ClientError, "#{name}:unknown:"
     end
+    name += '?' if query?(name)
     target = args.shift
     [target, name, args]
   end
@@ -72,6 +73,10 @@ class RackDispatcher
 
   def pretty(body)
     JSON.pretty_generate(body)
+  end
+
+  def query?(name)
+    ['ported'].include?(name)
   end
 
 end

@@ -6,10 +6,6 @@ class ShaTest < TestBase
     'FB3'
   end
 
-  def sha
-    env.sha
-  end
-
   # - - - - - - - - - - - - - - - - -
 
   test '191',

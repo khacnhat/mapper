@@ -1,8 +1,8 @@
 
 class RackDispatcherStub
 
-  def ready
-    "hello from #{self.class.name}.ready"
+  def ready?
+    "hello from #{self.class.name}.ready?"
   end
 
   def sha

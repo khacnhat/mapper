@@ -1,3 +1,4 @@
+require_relative 'base58'
 require_relative 'client_error'
 require 'json'
 

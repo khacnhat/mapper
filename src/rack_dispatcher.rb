@@ -76,7 +76,7 @@ class RackDispatcher
   end
 
   def query?(name)
-    ['ported'].include?(name)
+    ['ready','ported'].include?(name)
   end
 
 end

@@ -9,8 +9,8 @@ class ReadyTest < TestBase
   # - - - - - - - - - - - - - - - - -
 
   test '602',
-  %w( ready ) do
-    assert ported.ready
+  %w( ready? ) do
+    assert ready?
   end
 
 end

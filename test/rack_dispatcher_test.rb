@@ -48,19 +48,24 @@ class RackDispatcherTest < TestBase
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
+  # ready?
+  # - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  test 'E42',
+  'dispatch to ready' do
+    assert_dispatch('ready?', {}.to_json,
+      "hello from #{stub_name}.ready?"
+    )
+  end
+
+  # - - - - - - - - - - - - - - - - - - - - - - - - - -
+  # sha
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   test 'E41',
   'dispatch to sha' do
     assert_dispatch('sha', {}.to_json,
       "hello from #{stub_name}.sha"
-    )
-  end
-
-  test 'E42',
-  'dispatch to ready' do
-    assert_dispatch('ready', {}.to_json,
-      "hello from #{stub_name}.ready"
     )
   end
 
@@ -131,7 +136,7 @@ class RackDispatcherTest < TestBase
   test 'C23',
   'dispatch to ported_id raises when partial_id is less than 6 chars long' do
     partial_id = "abcde"
-    assert_equal 5, partial_id.size    
+    assert_equal 5, partial_id.size
     assert_dispatch_raises('ported_id',
       { partial_id:partial_id }.to_json,
       400,

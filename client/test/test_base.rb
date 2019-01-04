@@ -1,10 +1,10 @@
 require_relative 'hex_mini_test'
-require_relative '../src/externals'
+require_relative '../src/ported_service'
 
 class TestBase < HexMiniTest
 
-  def externals
-    @externals ||= Externals.new
+  def ported
+    PortedService.new
   end
 
   def ready?
@@ -12,7 +12,7 @@ class TestBase < HexMiniTest
   end
 
   def sha
-    env.sha
+    ported.sha
   end
 
   def ported?(id6)
@@ -21,16 +21,6 @@ class TestBase < HexMiniTest
 
   def ported_id(partial_id)
     ported.ported_id(partial_id)
-  end
-
-  # - - - - - - - - - - - - - -
-
-  def ported
-    externals.ported
-  end
-
-  def env
-    externals.env
   end
 
 end

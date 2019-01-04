@@ -1,7 +1,7 @@
 
 class Ported
 
-  def ready
+  def ready?
     true
   end
 

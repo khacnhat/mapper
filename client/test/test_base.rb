@@ -7,6 +7,10 @@ class TestBase < HexMiniTest
     PortedService.new
   end
 
+  def unknown
+    ported.unknown
+  end
+
   def ready?
     ported.ready?
   end

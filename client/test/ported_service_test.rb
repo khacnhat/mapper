@@ -8,6 +8,17 @@ class PortedServiceTest < TestBase
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
+  # unknown
+  # - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  test '188',
+  %w( unknown ) do
+    error = assert_raises(ServiceError) { unknown }
+    json = JSON.parse!(error.message)
+    assert_equal 'PortedService', json['class']
+  end
+
+  # - - - - - - - - - - - - - - - - - - - - - - - - - -
   # ready?
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
 

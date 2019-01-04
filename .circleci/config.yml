@@ -39,7 +39,7 @@ jobs:
 
 workflows:
   version: 2
-  build-image:
+  build-publish-deploy:
     jobs:
       - build-image:
           context: cyberdojo-context

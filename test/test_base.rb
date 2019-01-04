@@ -11,6 +11,10 @@ class TestBase < HexMiniTest
     ported.ported?(id6)
   end
 
+  def ported_id(partial_id)
+    ported.ported_id(partial_id)
+  end
+
   # - - - - - - - - - - - - - -
 
   def ported

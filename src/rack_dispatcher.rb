@@ -36,10 +36,12 @@ class RackDispatcher
   def validated_name_args(name, body)
     env = @externals.env
     ported = @externals.ported
-    #wfa = WellFormedArgs.new(body)
+    wfa = WellFormedArgs.new(body)
     args = case name
-      when /^ready$/ then [ported]
-      when /^sha$/   then [env]
+      when /^ready$/     then [ported]
+      when /^sha$/       then [env]
+      when /^ported$/    then [ported, wfa.id6]
+      when /^ported_id$/ then [ported, wfa.partial_id]
       else
         raise ClientError, "#{name}:unknown:"
     end

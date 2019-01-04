@@ -7,6 +7,12 @@ class TestBase < HexMiniTest
     @externals ||= Externals.new
   end
 
+  def ported?(id6)
+    ported.ported?(id6)
+  end
+
+  # - - - - - - - - - - - - - -
+
   def ported
     externals.ported
   end

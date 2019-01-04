@@ -6,15 +6,11 @@ class ReadyTest < TestBase
     '0B2'
   end
 
-  def ready
-    ported.ready
-  end
-
   # - - - - - - - - - - - - - - - - -
 
   test '602',
   %w( ready ) do
-    assert ready
+    assert ported.ready
   end
 
 end

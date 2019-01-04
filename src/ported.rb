@@ -2,6 +2,7 @@
 class Ported
 
   def ready
+    true
   end
 
   # Used by saver service, exposed by dispatcher

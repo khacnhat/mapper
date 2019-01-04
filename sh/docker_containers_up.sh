@@ -87,4 +87,4 @@ readonly MY_NAME=ported
 
 wait_until_ready "test-${MY_NAME}-server" 4547 ready
 exit_unless_clean "test-${MY_NAME}-server"
-wait_until_up "test-${MY_NAME}-client"
+#wait_until_up "test-${MY_NAME}-client"

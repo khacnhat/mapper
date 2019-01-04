@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly name=porter # name of the service
+readonly name=ported # name of the service
 readonly dir=porter
 readonly uid=19664
 readonly username=porter
@@ -20,33 +20,11 @@ if [[ ! -d /${dir} ]]; then
   exit 1
 fi
 
-readonly probe="for-ownership"
-mkdir /${dir}/${probe} 2>/dev/null
-if [ $? -ne 0 ] ; then
-  cmd="chown ${uid}:${gid} /${dir}"
-  echo "ERROR"
-  echo "The ${name} service needs write access to /${dir}"
-  echo "username=${username} (uid=${uid})"
-  echo "group=${group} (gid=${gid})"
-  echo "Please run:"
-  echo "  $ [sudo] ${cmd}"
-  echo "If you are running on Docker-Toolbox remember"
-  echo "to run this on the target VM. For example:"
-  echo "  \$ docker-machine ssh ${vm_target} sudo ${cmd}"
-  exit 2
-else
-  rmdir /${dir}/${probe}
-fi
-
 # - - - - - - - - - - - - - - - - - - - - -
 set -e
 
 if [ ! -d /${dir}/mapped-ids ]; then
   mkdir /${dir}/mapped-ids
-fi
-
-if [ ! -d /${dir}/raised-ids ]; then
-  mkdir /${dir}/raised-ids
 fi
 
 rackup             \

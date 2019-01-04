@@ -1,5 +1,6 @@
 
 [![Build Status](https://travis-ci.org/cyber-dojo/ported.svg?branch=master)](https://travis-ci.org/cyber-dojo/ported)
+[![CircleCI](https://circleci.com/gh/cyber-dojo/ported.svg?style=svg)](https://circleci.com/gh/cyber-dojo/ported)
 
 <img src="https://raw.githubusercontent.com/cyber-dojo/nginx/master/images/home_page_logo.png"
 alt="cyber-dojo yin/yang logo" width="50px" height="50px"/>

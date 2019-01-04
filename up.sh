@@ -1,12 +1,12 @@
 #!/bin/bash
 
-readonly name=ported # name of the service
 readonly dir=/porter/mapped-ids
 
 if [[ ! -d ${dir} ]]; then
-  echo "ERROR"
-  echo "The ${name} service cannot see ${dir}"
-  exit 1
+  echo "INFO"
+  echo "The ported service cannot see ${dir}"
+  echo "and is assuming there has been no port of"
+  echo "old-architecture storer to new-architecture saver"
 fi
 
 # - - - - - - - - - - - - - - - - - - - - -

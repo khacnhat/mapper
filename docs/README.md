@@ -35,7 +35,8 @@ API:
 ```
 - returns true if the service is ready, otherwise false.
 ```
-  { "ready?": "true" }
+  { "ready?": true }
+  { "ready?": false }
 ```
 
 - - - -

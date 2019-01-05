@@ -20,38 +20,27 @@ class Demo
   private
 
   def ready?
-    result,duration = timed { mapper.ready? }
-    @html += pre('ready?', duration, result)
+    @html += pre('ready?') { mapper.ready? }
   end
 
   def sha
-    result,duration = timed { mapper.sha }
-    @html += pre('sha', duration, result)
+    @html += pre('sha') { mapper.sha }
   end
 
   def mapped?
-    result,duration = timed { mapper.mapped?('33EBEA') }
-    @html += pre("mapped?('33EBEA')", duration, result)
+    @html += pre("mapped?('33EBEA')") { mapper.mapped?('33EBEA') }
   end
 
   def mapped_id
-    result,duration = timed { mapper.mapped_id('33EBEAC') }
-    @html += pre("mapped_id('33EBEAC')", duration, result)
+    @html += pre("mapped_id('33EBEAC')") { mapper.mapped_id('33EBEAC') }
   end
 
   def mapper
     MapperService.new
   end
 
-  def timed
-    started = Time.now
-    result = yield
-    finished = Time.now
-    duration = '%.3f' % (finished - started)
-    [result,duration]
-  end
-
-  def pre(name, duration, result)
+  def pre(name, &block)
+    result,duration = timed { block.call }
     colour = 'moccasin'
     border = 'border: 1px solid black;'
     padding = 'padding: 5px;'
@@ -65,6 +54,14 @@ class Demo
               '</pre>'
     end
     html
+  end
+
+  def timed
+    started = Time.now
+    result = yield
+    finished = Time.now
+    duration = '%.3f' % (finished - started)
+    [result,duration]
   end
 
 end

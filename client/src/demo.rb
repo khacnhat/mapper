@@ -21,22 +21,22 @@ class Demo
 
   def ready?
     result,duration = timed { mapper.ready? }
-    @html += pre('ready?', duration, 'moccasin', result)
+    @html += pre('ready?', duration, result)
   end
 
   def sha
     result,duration = timed { mapper.sha }
-    @html += pre('sha', duration, 'moccasin', result)
+    @html += pre('sha', duration, result)
   end
 
   def mapped?
     result,duration = timed { mapper.mapped?('33EBEA') }
-    @html += pre("mapped?('33EBEA')", duration, 'moccasin', result)
+    @html += pre("mapped?('33EBEA')", duration, result)
   end
 
   def mapped_id
     result,duration = timed { mapper.mapped_id('33EBEAC') }
-    @html += pre("mapped_id('33EBEAC')", duration, 'moccasin', result)
+    @html += pre("mapped_id('33EBEAC')", duration, result)
   end
 
   def mapper
@@ -51,7 +51,8 @@ class Demo
     [result,duration]
   end
 
-  def pre(name, duration, colour = 'white', result = nil)
+  def pre(name, duration, result)
+    colour = 'moccasin'
     border = 'border: 1px solid black;'
     padding = 'padding: 5px;'
     margin = 'margin-left: 30px; margin-right: 30px;'

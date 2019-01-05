@@ -1,9 +1,9 @@
 require_relative 'http_helper'
 
-class PortedService
+class MapperService
 
   def initialize
-    @http = HttpHelper.new(self, 'ported', 4547)
+    @http = HttpHelper.new(self, 'mapper', 4547)
   end
 
   def unknown
@@ -18,11 +18,11 @@ class PortedService
     http.get
   end
 
-  def ported?(id6)
+  def mapped?(id6)
     http.get(id6)
   end
 
-  def ported_id(partial_id)
+  def mapped_id(partial_id)
     http.get(partial_id)
   end
 

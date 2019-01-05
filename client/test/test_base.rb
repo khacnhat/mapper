@@ -1,30 +1,30 @@
 require_relative 'hex_mini_test'
-require_relative '../src/ported_service'
+require_relative '../src/mapper_service'
 
 class TestBase < HexMiniTest
 
-  def ported
-    PortedService.new
+  def mapper
+    MapperService.new
   end
 
   def unknown
-    ported.unknown
+    mapper.unknown
   end
 
   def ready?
-    ported.ready?
+    mapper.ready?
   end
 
   def sha
-    ported.sha
+    mapper.sha
   end
 
-  def ported?(id6)
-    ported.ported?(id6)
+  def mapped?(id6)
+    mapper.mapped?(id6)
   end
 
-  def ported_id(partial_id)
-    ported.ported_id(partial_id)
+  def mapped_id(partial_id)
+    mapper.mapped_id(partial_id)
   end
 
 end

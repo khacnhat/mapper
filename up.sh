@@ -4,7 +4,7 @@ readonly dir=/porter/mapped-ids
 
 if [[ ! -d ${dir} ]]; then
   echo "INFO"
-  echo "The ported service cannot see ${dir}"
+  echo "The mapper service cannot see ${dir}"
   echo "and is assuming there has been no port of"
   echo "old-architecture storer to new-architecture saver"
 fi

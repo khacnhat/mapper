@@ -83,8 +83,8 @@ docker-compose \
   -d \
   --force-recreate
 
-readonly MY_NAME=ported
+readonly MY_NAME=mapper
 
 wait_until_ready "test-${MY_NAME}-server" 4547 ready
 exit_unless_clean "test-${MY_NAME}-server"
-#wait_until_up "test-${MY_NAME}-client"
+wait_until_up "test-${MY_NAME}-client"

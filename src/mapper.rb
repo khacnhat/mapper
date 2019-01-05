@@ -1,17 +1,17 @@
 
-class Ported
+class Mapper
 
   def ready?
     true
   end
 
   # Used by saver service, exposed by dispatcher
-  def ported?(id6)
+  def mapped?(id6)
     dir_glob(id6).size > 0
   end
 
   # Used by web service, exposed by dispatcher
-  def ported_id(partial_id)
+  def mapped_id(partial_id)
     globs = dir_glob(partial_id)
     if globs.size == 1
       IO.read(globs[0])

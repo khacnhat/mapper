@@ -13,7 +13,7 @@ class RackDispatcherTest < TestBase
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class ThrowingRackDispatcherStub
-    def ported?(_id6)
+    def mapped?(_id6)
       fail ArgumentError, 'wibble'
     end
   end
@@ -21,7 +21,7 @@ class RackDispatcherTest < TestBase
   test 'F1A',
   'dispatch returns 500 status when implementation raises' do
     @stub = ThrowingRackDispatcherStub.new
-    assert_dispatch_raises('ported?',
+    assert_dispatch_raises('mapped?',
       { id6:'123456' }.to_json,
       500,
       'wibble')
@@ -41,7 +41,7 @@ class RackDispatcherTest < TestBase
 
   test 'F1C',
   'dispatch raises when json is malformed' do
-    assert_dispatch_raises('ported?',
+    assert_dispatch_raises('mapped?',
       'xxx',
       400,
       'json:malformed')
@@ -70,14 +70,14 @@ class RackDispatcherTest < TestBase
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # ported?
+  # mapped?
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   test 'E5B',
-  'dispatch to ported? raises when id6 is not Base58 string' do
+  'dispatch to mapped? raises when id6 is not Base58 string' do
     bad_char = '&'
     id6 = "abc#{bad_char}def"
-    assert_dispatch_raises('ported?',
+    assert_dispatch_raises('mapped?',
       { id6:id6 }.to_json,
       400,
       'id6:malformed:!Base58:'
@@ -85,10 +85,10 @@ class RackDispatcherTest < TestBase
   end
 
   test 'E5C',
-  'dispatch to ported? raises when id6 is less than 6 chars long' do
+  'dispatch to mapped? raises when id6 is less than 6 chars long' do
     id6 = '12345'
     assert_equal 5, id6.size
-    assert_dispatch_raises('ported?',
+    assert_dispatch_raises('mapped?',
       { id6:id6 }.to_json,
       400,
       'id6:malformed:size==5 !6:'
@@ -96,10 +96,10 @@ class RackDispatcherTest < TestBase
   end
 
   test 'E5D',
-  'dispatch to ported? raises when id is more than 6 chars long' do
+  'dispatch to mapped? raises when id is more than 6 chars long' do
     id6 = '1234567'
     assert_equal 7, id6.size
-    assert_dispatch_raises('ported?',
+    assert_dispatch_raises('mapped?',
       { id6:id6 }.to_json,
       400,
       'id6:malformed:size==7 !6:'
@@ -109,24 +109,24 @@ class RackDispatcherTest < TestBase
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   test 'E61',
-  'dispatch to ported? with id of 6 chars does not raise' do
+  'dispatch to mapped? with id of 6 chars does not raise' do
     id6 = '123456'
     assert_equal 6, id6.size
-    assert_dispatch('ported?',
+    assert_dispatch('mapped?',
       { id6:id6 }.to_json,
-      "hello from #{stub_name}.ported?"
+      "hello from #{stub_name}.mapped?"
     )
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # ported_id
+  # mapped_id
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   test 'C22',
-  'dispatch to ported_id raises when partial_id is not Base58 string' do
+  'dispatch to mapped_id raises when partial_id is not Base58 string' do
     bad_char = '&'
     partial_id = "abc#{bad_char}def"
-    assert_dispatch_raises('ported_id',
+    assert_dispatch_raises('mapped_id',
       { partial_id:partial_id }.to_json,
       400,
       'partial_id:malformed:!Base58:'
@@ -134,10 +134,10 @@ class RackDispatcherTest < TestBase
   end
 
   test 'C23',
-  'dispatch to ported_id raises when partial_id is less than 6 chars long' do
+  'dispatch to mapped_id raises when partial_id is less than 6 chars long' do
     partial_id = "abcde"
     assert_equal 5, partial_id.size
-    assert_dispatch_raises('ported_id',
+    assert_dispatch_raises('mapped_id',
       { partial_id:partial_id }.to_json,
       400,
       'partial_id:malformed:size==5 !(6..10):'
@@ -145,10 +145,10 @@ class RackDispatcherTest < TestBase
   end
 
   test 'C24',
-  'dispatch to ported_id raises when partial_id is more than 10 chars long' do
+  'dispatch to mapped_id raises when partial_id is more than 10 chars long' do
     partial_id = "abcde12345X"
     assert_equal 11, partial_id.size
-    assert_dispatch_raises('ported_id',
+    assert_dispatch_raises('mapped_id',
       { partial_id:partial_id }.to_json,
       400,
       'partial_id:malformed:size==11 !(6..10):'
@@ -156,12 +156,12 @@ class RackDispatcherTest < TestBase
   end
 
   test 'C25',
-  'dispatch to ported_id with partial_id of 10 chars does not raise' do
+  'dispatch to mapped_id with partial_id of 10 chars does not raise' do
     partial_id = "abcde12345"
     assert_equal 10, partial_id.size
-    assert_dispatch('ported_id',
+    assert_dispatch('mapped_id',
       { partial_id:partial_id }.to_json,
-      "hello from #{stub_name}.ported_id"
+      "hello from #{stub_name}.mapped_id"
     )
   end
 
@@ -205,7 +205,7 @@ class RackDispatcherTest < TestBase
     refute_nil exception
     assert_equal name, exception['path']
     assert_equal body, exception['body']
-    assert_equal 'PortedService', exception['class']
+    assert_equal 'MapperService', exception['class']
     assert_equal message, exception['message']
     assert_equal 'Array', exception['backtrace'].class.name
   end

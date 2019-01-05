@@ -3,34 +3,34 @@ require_relative '../src/externals'
 
 class TestBase < HexMiniTest
 
-  def externals
-    @externals ||= Externals.new
-  end
-
   def ready?
-    ported.ready?
+    mapper.ready?
   end
 
   def sha
     env.sha
   end
 
-  def ported?(id6)
-    ported.ported?(id6)
+  def mapped?(id6)
+    mapper.mapped?(id6)
   end
 
-  def ported_id(partial_id)
-    ported.ported_id(partial_id)
+  def mapped_id(partial_id)
+    mapper.mapped_id(partial_id)
   end
 
   # - - - - - - - - - - - - - -
 
-  def ported
-    externals.ported
+  def mapper
+    externals.mapper
   end
 
   def env
     externals.env
+  end
+
+  def externals
+    @externals ||= Externals.new
   end
 
 end

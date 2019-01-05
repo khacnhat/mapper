@@ -1,5 +1,5 @@
 require_relative 'external_env'
-require_relative 'ported'
+require_relative 'mapper'
 
 class Externals
 
@@ -7,8 +7,8 @@ class Externals
     @env ||= ExternalEnv.new
   end
 
-  def ported
-    @ported ||= Ported.new
+  def mapper
+    @ported ||= Mapper.new
   end
 
 end

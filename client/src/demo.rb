@@ -1,4 +1,4 @@
-require_relative 'ported_service'
+require_relative 'mapper_service'
 
 class Demo
 
@@ -12,35 +12,35 @@ class Demo
     @html = ''
     ready?
     sha
-    ported?
-    ported_id
+    mapped?
+    mapped_id
     [ 200, { 'Content-Type' => 'text/html' }, [ @html ] ]
   end
 
   private
 
   def ready?
-    result,duration = timed { ported.ready? }
+    result,duration = timed { mapper.ready? }
     @html += pre('ready?', duration, 'moccasin', result)
   end
 
   def sha
-    result,duration = timed { ported.sha }
+    result,duration = timed { mapper.sha }
     @html += pre('sha', duration, 'moccasin', result)
   end
 
-  def ported?
-    result,duration = timed { ported.ported?('33EBEA') }
-    @html += pre("ported?('33EBEA')", duration, 'moccasin', result)
+  def mapped?
+    result,duration = timed { mapper.mapped?('33EBEA') }
+    @html += pre("mapped?('33EBEA')", duration, 'moccasin', result)
   end
 
-  def ported_id
-    result,duration = timed { ported.ported_id('33EBEAC') }
-    @html += pre("ported_id('33EBEAC')", duration, 'moccasin', result)
+  def mapped_id
+    result,duration = timed { mapper.mapped_id('33EBEAC') }
+    @html += pre("mapped_id('33EBEAC')", duration, 'moccasin', result)
   end
 
-  def ported
-    PortedService.new
+  def mapper
+    MapperService.new
   end
 
   def timed

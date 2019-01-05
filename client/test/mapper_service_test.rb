@@ -1,7 +1,7 @@
 require_relative '../src/service_error'
 require_relative 'test_base'
 
-class PortedServiceTest < TestBase
+class MapperServiceTest < TestBase
 
   def self.hex_prefix
     'D06'
@@ -15,7 +15,7 @@ class PortedServiceTest < TestBase
   %w( unknown ) do
     error = assert_raises(ServiceError) { unknown }
     json = JSON.parse!(error.message)
-    assert_equal 'PortedService', json['class']
+    assert_equal 'MapperService', json['class']
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -40,44 +40,44 @@ class PortedServiceTest < TestBase
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # ported?(id6)
+  # mapped?(id6)
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   test '211',
-  %w( ported?(id6) false ) do
-    refute ported?('112233')
-    refute ported?('332211')
+  %w( mapped?(id6) false ) do
+    refute mapped?('112233')
+    refute mapped?('332211')
   end
 
   test '212',
-  %w( ported?(id6) true ) do
-    assert ported?('33EBEA')
-    assert ported?('B975C1')
+  %w( mapped?(id6) true ) do
+    assert mapped?('33EBEA')
+    assert mapped?('B975C1')
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # ported_id(partial_id)
+  # mapped_id(partial_id)
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   test '37B',
-  %w( ported_id of unmatched partial_id is empty string ) do
-    assert_equal '', ported_id('223344')
+  %w( mapped_id of unmatched partial_id is empty string ) do
+    assert_equal '', mapped_id('223344')
   end
 
   test '37C',
-  %w( ported_id of uniquely matched partial_id is the match, length==6 ) do
-    assert_equal 'B975C1', ported_id('B975C1')
+  %w( mapped_id of uniquely matched partial_id is the match, length==6 ) do
+    assert_equal 'B975C1', mapped_id('B975C1')
   end
 
   test '37D',
-  %w( ported_id of non-unique matched partial_id is empty string ) do
-    assert_equal '', ported_id('33EBEA')
+  %w( mapped_id of non-unique matched partial_id is empty string ) do
+    assert_equal '', mapped_id('33EBEA')
   end
 
   test '37E',
-  %w( ported_id of uniquely matched partial_id is the match, length==7 ) do
-    assert_equal 'RpWCCP', ported_id('33EBEAC')
-    assert_equal 'P5S6XX', ported_id('33EBEAE')
+  %w( mapped_id of uniquely matched partial_id is the match, length==7 ) do
+    assert_equal 'RpWCCP', mapped_id('33EBEAC')
+    assert_equal 'P5S6XX', mapped_id('33EBEAE')
   end
 
 end

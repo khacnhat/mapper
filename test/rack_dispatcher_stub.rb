@@ -9,12 +9,12 @@ class RackDispatcherStub
     "hello from #{self.class.name}.sha"
   end
 
-  def ported?(_id6)
-    "hello from #{self.class.name}.ported?"
+  def mapped?(_id6)
+    "hello from #{self.class.name}.mapped?"
   end
 
-  def ported_id(_partial_id)
-    "hello from #{self.class.name}.ported_id"
+  def mapped_id(_partial_id)
+    "hello from #{self.class.name}.mapped_id"
   end
 
 end

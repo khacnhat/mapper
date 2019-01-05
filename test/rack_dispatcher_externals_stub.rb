@@ -11,7 +11,7 @@ class RackDispatcherExternalsStub
     stub
   end
 
-  def ported
+  def mapper
     stub
   end
 

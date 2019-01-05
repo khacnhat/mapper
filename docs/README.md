@@ -14,7 +14,6 @@ to
 [saver](https://github.com/cyber-dojo/saver)
 by
 [porter](https://github.com/cyber-dojo/porter)
-- Work in progress - not yet used
 
 API:
   * All methods receive their named arguments in a json hash.

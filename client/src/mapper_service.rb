@@ -1,9 +1,9 @@
-require_relative 'http_helper'
+require_relative 'http'
 
 class MapperService
 
   def initialize
-    @http = HttpHelper.new(self, 'mapper', 4547)
+    @http = Http.new(self, 'mapper', 4547)
   end
 
   def unknown

@@ -60,8 +60,8 @@ class MapperServiceTest < TestBase
   # - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   test '37B',
-  %w( mapped_id of unmatched partial_id is empty string ) do
-    assert_equal '', mapped_id('223344')
+  %w( mapped_id of unmatched partial_id is unchanged partial_id ) do
+    assert_equal '223344', mapped_id('223344')
   end
 
   test '37C',
@@ -70,8 +70,8 @@ class MapperServiceTest < TestBase
   end
 
   test '37D',
-  %w( mapped_id of non-unique matched partial_id is empty string ) do
-    assert_equal '', mapped_id('33EBEA')
+  %w( mapped_id of non-unique matched partial_id is unchanged partial_id ) do
+    assert_equal '33EBEA', mapped_id('33EBEA')
   end
 
   test '37E',

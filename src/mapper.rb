@@ -16,7 +16,7 @@ class Mapper
     if globs.size == 1
       IO.read(globs[0])
     else
-      ''
+      partial_id
     end
   end
 

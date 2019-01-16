@@ -78,11 +78,11 @@ session whose 10-digit id uniquely completes the given 6-10 digit (storer) parti
     { "partial_id": "55D3B97" }
     { "partial_id": "55D3B97E" }    
 ```
-- returns the 6-digit saver id if it exists, otherwise the empty string.
+- returns the 6-digit saver id if it exists, otherwise the unchanged partial_id.
 ```
     { "mapped_id": "55D3B9" }
     { "mapped_id": "E5pL3S" }
-    { "mapped_id": "" }
+    { "mapped_id": "55D3B97E" }
 ```
 
 - - - -

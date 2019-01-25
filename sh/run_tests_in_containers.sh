@@ -30,10 +30,10 @@ run_server_tests()
     tar Ccf \
       "$(dirname "${COVERAGE_ROOT}")" \
       - "$(basename "${COVERAGE_ROOT}")" \
-        | tar Cxf "${ROOT_DIR}/" -
+        | tar Cxf "${ROOT_DIR}/test_server/" -
 
-  echo "Coverage report copied to ${MY_NAME}/coverage/"
-  cat "${ROOT_DIR}/coverage/done.txt"
+  echo "Coverage report copied to ${MY_NAME}/test_server/coverage/"
+  cat "${ROOT_DIR}/test_server/coverage/done.txt"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,10 +53,10 @@ run_client_tests()
     tar Ccf \
       "$(dirname "${COVERAGE_ROOT}")" \
       - "$(basename "${COVERAGE_ROOT}")" \
-        | tar Cxf "${ROOT_DIR}/client/" -
+        | tar Cxf "${ROOT_DIR}/test_client/" -
 
-  echo "Coverage report copied to ${MY_NAME}/client/coverage/"
-  cat "${ROOT_DIR}/client/coverage/done.txt"
+  echo "Coverage report copied to ${MY_NAME}/test_client/coverage/"
+  cat "${ROOT_DIR}/test_client/coverage/done.txt"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - -

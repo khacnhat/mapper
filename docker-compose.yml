@@ -5,7 +5,7 @@ services:
 
   mapper_client:
     build:
-      context: client
+      context: test_client
     user: nobody:nogroup
     image: cyberdojo/mapper-client
     init: true
@@ -35,4 +35,5 @@ services:
     tmpfs: /tmp
     restart: 'no'
     volumes:
-      - ./test/data/porter:/porter:ro
+      - ./test_server:/app/test:ro
+      - ./test_server/data/porter:/porter:ro

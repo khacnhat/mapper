@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-publish-image:
+  build-publish:
 
     machine:
       enabled: true
@@ -24,8 +24,10 @@ jobs:
             echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
             docker push cyberdojo/${project}:${CIRCLE_SHA1:0:7}
             docker push cyberdojo/${project}:beta
+            # old architecture
+            docker push cyberdojo/${project}:latest
 
-  deploy-image-to-beta:
+  deploy-to-beta:
     docker:
       - image: cyberdojo/gcloud-kubectl-helm
     steps:
@@ -45,13 +47,13 @@ workflows:
   version: 2
   build-publish-deploy:
     jobs:
-      - build-publish-image:
+      - build-publish:
           context: cyberdojo-context
           filters:
             branches:
               only:
                   - master
-      - deploy-image-to-beta:
+      - deploy-to-beta:
           context: cyberdojo-context
           requires:
-            - build-publish-image
+            - build-publish

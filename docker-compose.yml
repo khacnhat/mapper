@@ -26,7 +26,7 @@ services:
       args:
         - SHA
     user: nobody
-    image: cyberdojo/mapper
+    image: khacnhat/mapper-dojo
     init: true
     container_name: test-mapper-server
     read_only: true
